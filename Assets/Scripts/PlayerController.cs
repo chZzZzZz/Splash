@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
         movement.Normalize();
         //transform.position += movement*moveSpeed*Time.deltaTime;
         //rb.velocity = movement*moveSpeed;
-        Debug.Log(string.Format("{0}and{1}", rb.velocity, movement * moveSpeed));
+        //Debug.Log(string.Format("{0}and{1}", rb.velocity, movement * moveSpeed));
         rb.velocity = Vector2.Lerp(rb.velocity, movement * moveSpeed, Time.deltaTime * 22f);//用刚体的移动更好一点，速度与帧率无关，所以不用*Time.deltaTime
         //Debug.Log(rb.velocity);
     }
