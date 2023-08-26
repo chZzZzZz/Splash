@@ -14,8 +14,8 @@ public class LineManager : MonoBehaviour
     private Transform playerPos;
     private GameObject MagicBullet;
 
-    private bool startDraw = false;
-    private bool isRun = false;
+    //private bool startDraw = false;
+    //private bool isRun = false;
 
     private float timeScale = 1f;
     public int speed = 24;
@@ -39,14 +39,17 @@ public class LineManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!startDraw)
+        if (GameManager.Instance.isPlayerAlive)
         {
-            MagicBullet.transform.position = playerPos.position;
+            if (!GameManager.Instance.isRun)
+            {
+                MagicBullet.transform.position = playerPos.position;
+            }
+
+            DrawLineStart();
+
+            DrawLineEnd();
         }
-        
-        DrawLineStart();
-        
-        DrawLineEnd();
     }
 
     private void AddPoint()
@@ -69,11 +72,11 @@ public class LineManager : MonoBehaviour
             timeScale = 0.001f;
             Time.timeScale = timeScale;
 
-            startDraw = true;
+            GameManager.Instance.startDraw = true;
             AddPoint();
             
         }
-        else if (Input.GetMouseButton(0) && startDraw)
+        else if (Input.GetMouseButton(0) && GameManager.Instance.startDraw)
         {
             playerPos.gameObject.SetActive(false);
             AddPoint();
@@ -84,22 +87,24 @@ public class LineManager : MonoBehaviour
     {
         if (Input.GetMouseButtonUp(0))
         {
-            if(startDraw)
+            if(GameManager.Instance.startDraw)
             {
-                isRun = true;
+                GameManager.Instance.isRun = true;
+                lineRenderer.positionCount = 0;
+                GameManager.Instance.startDraw = false;
             }
             
             
 
         }
-        if (isRun)
+        if (GameManager.Instance.isRun)
         {
-            
             MagicBullet.transform.position = Vector3.MoveTowards(MagicBullet.transform.position, pointList[curIndex], speed * Time.deltaTime);
             //playerPos.position = pointList[curIndex];
             if (Vector3.Distance(MagicBullet.transform.position, pointList[curIndex]) < 0.01f)
             {
                 curIndex++;
+                
                 //画特效
                 GameObject ShotEffectPrefab = Resources.Load<GameObject>("Prefabs/BloodTrail");
                 GameObject shotEffect = Instantiate(ShotEffectPrefab, MagicBullet.transform.position, Quaternion.identity);
@@ -108,12 +113,12 @@ public class LineManager : MonoBehaviour
                 shotEffect.transform.rotation = randomRotationQuaternion;
                 shotEffect.transform.SetParent(ShotEffects.transform);
 
-                Debug.Log(curIndex);
+                
                 //到终点
                 if (curIndex == pointList.Count)
                 {
-                    isRun=false;
-                    startDraw = false;
+                    GameManager.Instance.isRun=false;
+                    
                     foreach (Transform child in ShotEffects.transform)
                     {
                         Animator anim = child.GetComponent<Animator>();

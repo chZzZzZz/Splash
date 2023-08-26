@@ -9,7 +9,12 @@ public class CameraManager : MonoBehaviour
     // Start is called before the first frame update
     private void LateUpdate()
     {
-        Vector3 target = GameManager.Instance.player.transform.position + new Vector3(offsetX, offsetY, -20f);
-        transform.position = target;
+        if (!GameManager.Instance.startDraw)
+        {
+            Vector3 target = GameManager.Instance.MagicBullet.transform.position + new Vector3(offsetX, offsetY, -20f);
+            
+            transform.position = Vector3.Lerp(transform.position, target, Time.deltaTime * 2000); ;
+        }
+        
     }
 }

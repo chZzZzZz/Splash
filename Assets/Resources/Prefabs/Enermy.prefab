@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 7852450085085021566}
   - component: {fileID: 7852450085085021565}
   - component: {fileID: 7852450085085021564}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Enermy
-  m_TagString: Untagged
+  m_TagString: Enermy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -97,7 +97,7 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.04273047, y: 0.008790205}

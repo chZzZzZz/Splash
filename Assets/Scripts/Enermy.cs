@@ -19,12 +19,35 @@ public class Enermy : MonoBehaviour
         Vector2 direction = player.transform.position - transform.position;
         direction.Normalize();
         rb.velocity += direction*moveSpeed;
-        Debug.Log(rb.velocity);
+        
         rb.velocity *= Time.fixedDeltaTime * 20;
 
 
 
     }
+
+
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        //if (collision.gameObject.CompareTag("Player"))
+        //{
+        //    GameManager.Instance.isPlayerAlive = false;
+        //    Destroy(collision.gameObject);
+        //}
+        //Debug.Log(collision.gameObject.tag);
+
+    }
+
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    Debug.Log("trigger Enter");
+    //}
+
+
+
+
+
 
     // Update is called once per frame
     void Update()
