@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: EnermyFast
+  m_Controller: {fileID: 9100000, guid: 474f9436868ab5449a832a80c55f7507, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 3e10bfb65d5092c49a4c683807b9c2cd, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: b6164e3e617f83d4e8e4ec970be056d5, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: a06fe71b09d1f0a45ba84fdfd3fff880, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 233588b5b794f7844aa4525ad0bf3773, type: 2}

@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 7852450085085021566}
   - component: {fileID: 7852450085085021565}
   - component: {fileID: 7852450085085021564}
+  - component: {fileID: 7061064256451334225}
+  - component: {fileID: 1722569287}
   m_Layer: 8
   m_Name: Enermy
   m_TagString: Enermy
@@ -97,7 +99,7 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.04273047, y: 0.008790205}
@@ -136,4 +138,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b612004551400840898605bfb12bb2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enermySprite: {fileID: 7852450085085021567}
+  enermyAnimator: {fileID: 7061064256451334225}
   moveSpeed: 8
+--- !u!95 &7061064256451334225
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2085826198065896873}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 22100000, guid: c9f0eb8cfb247784ba029cdb058bc858, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!58 &1722569287
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2085826198065896873}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.07720116}
+  serializedVersion: 2
+  m_Radius: 0.8050588

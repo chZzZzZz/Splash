@@ -40,11 +40,20 @@ public class MagicBullet : MonoBehaviour
             {
                 
                 Destroy(collider.gameObject);
+                GameObject HitEffectPrefab = Resources.Load<GameObject>("Prefabs/HitEffect");
+                GameObject HitEffect = Instantiate(HitEffectPrefab, collider.gameObject.transform.position, Quaternion.identity);
+                StartCoroutine(DestoryAfterDelay(HitEffect));
             }
         }
         
         
         
         
+    }
+
+    private IEnumerator DestoryAfterDelay(GameObject prefab)
+    {
+        yield return new WaitForSeconds(0.2f);
+        Destroy(prefab);
     }
 }

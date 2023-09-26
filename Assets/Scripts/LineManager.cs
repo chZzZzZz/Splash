@@ -12,6 +12,7 @@ public class LineManager : MonoBehaviour
     private int curIndex = 0;
 
     private Transform playerPos;
+    private SpriteRenderer playerSprite;
     private GameObject MagicBullet;
 
     //private bool startDraw = false;
@@ -30,6 +31,7 @@ public class LineManager : MonoBehaviour
        
         lineRenderer = GetComponent<LineRenderer>();
         playerPos = GameObject.Find("Player").GetComponent<Transform>();
+        playerSprite = GameObject.Find("Player").GetComponent<SpriteRenderer>();
         MagicBullet = GameObject.Find("MagicBullet");
         ShotEffects = GameObject.Find("ShotEffects");
         
@@ -78,7 +80,7 @@ public class LineManager : MonoBehaviour
         }
         else if (Input.GetMouseButton(0) && GameManager.Instance.startDraw)
         {
-            playerPos.gameObject.SetActive(false);
+            //playerPos.gameObject.SetActive(false);
             AddPoint();
         }
     }
@@ -97,7 +99,7 @@ public class LineManager : MonoBehaviour
             
 
         }
-        if (GameManager.Instance.isRun)
+        if (GameManager.Instance.isRun && !playerSprite.enabled)
         {
             MagicBullet.transform.position = Vector3.MoveTowards(MagicBullet.transform.position, pointList[curIndex], speed * Time.deltaTime);
             //playerPos.position = pointList[curIndex];
@@ -123,9 +125,11 @@ public class LineManager : MonoBehaviour
                     {
                         Animator anim = child.GetComponent<Animator>();
                         anim.SetBool("releaseBlood", true);
+                        Destroy(child.gameObject);
                     }
                     playerPos.position = pointList[curIndex - 1];
-                    playerPos.gameObject.SetActive(true);
+                    playerSprite.enabled = true;
+                    
                     pointList.Clear();
                     curIndex = 0;
                     lineRenderer.positionCount = 0;

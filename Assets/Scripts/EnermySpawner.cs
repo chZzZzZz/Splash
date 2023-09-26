@@ -22,7 +22,7 @@ public class EnermySpawner : MonoBehaviour
     void Update()
     {
         timer += Time.deltaTime;
-        if(timer>start_time && !started)
+        if(timer>start_time && !started && GameManager.Instance.isPlayerAlive)
         {
             if (Vector2.Distance(GameManager.Instance.player.transform.position, transform.position) > 10f)
             {
@@ -32,7 +32,7 @@ public class EnermySpawner : MonoBehaviour
         }
 
         var temp_time = time;
-        if (timer > time && started)
+        if (timer > time && started && GameManager.Instance.isPlayerAlive)
         {
             if (Vector2.Distance(GameManager.Instance.player.transform.position, transform.position) > 10f)
             {
